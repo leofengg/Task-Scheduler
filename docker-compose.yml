@@ -1,9 +1,20 @@
 version: "3"
 services:
   db:
-    build: /src/db
+    build:
+      context: .
+      dockerfile: Db-Dockerfile
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-
+    ports:
+      - "5432:5432"
+  scheduler:
+    build: 
+      context: .
+      dockerfile: Scheduler-Dockerfile
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}

@@ -1,0 +1,5 @@
+FROM postgres:13
+
+WORKDIR /app/src/db
+
+COPY /src/db/setup.sql /docker=entrypoint-initdb.d/
