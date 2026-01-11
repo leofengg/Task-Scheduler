@@ -1,14 +1,14 @@
 FROM golang:1.23
 
-WORKDIR /app/src/scheduler
+WORKDIR /app/src/coordinator
 
 COPY go.mod go.sum ./
 
 RUN go mod download
 
 COPY src/ ./src/
-COPY ../cmd/scheduler/main.go .
+COPY ../cmd/coordinator/main.go .
 
-RUN go build -o scheduler main.go
+RUN go build -o coordinator main.go
 
 CMD ["./coordinator", "--coordinator_port=:8082"]

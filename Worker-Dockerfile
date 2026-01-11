@@ -1,0 +1,14 @@
+FROM golang:1.23
+
+WORKDIR /app/src/worker
+
+COPY go.mod go.sum ./
+
+RUN go mod download
+
+COPY src/ ./src/
+COPY ../cmd/worker/main.go .
+
+RUN go build -o worker main.go
+
+CMD ["./worker", "--worker_port=:8083"]
