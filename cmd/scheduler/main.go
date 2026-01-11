@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"./src/scheduler"
+	"TaskScheduler/src/scheduler"
 
 	"github.com/JyotinderSingh/task-queue/pkg/common"
 )
